@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.fym.www</groupId>
+	<artifactId>kafka-example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>kafka-example</name>
+	<description>kafka-example</description>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+
+		<!-- kafka java client 包 -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
+
+		<!-- avro 序列化反序列化包 -->
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro</artifactId>
+			<version>1.8.2</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro-maven-plugin</artifactId>
+				<version>1.8.2</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>schema</goal>
+						</goals>
+						<configuration>
+							<sourceDirectory>${project.basedir}/src/main/java/avro/source</sourceDirectory>
+							<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					use the Java 8 language features
+					<source>1.8</source>
+					want the compiled classes to be compatible with JVM 1.8
+					<target>1.8</target>
+					The -encoding argument for the Java compiler.
+					<encoding>UTF8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

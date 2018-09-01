@@ -1,0 +1,13 @@
+# 此为注释 – 将被 Git 忽略
+
+# 忽略 target
+target/
+
+# 忽略 .settings
+.settings/
+
+# 忽略 .project
+.project
+
+# 忽略 .classpath
+.classpath
