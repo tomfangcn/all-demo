@@ -1,0 +1,45 @@
+server:
+   port: 8094
+eureka:
+   instance:
+      metadataMap:
+         instanceId: appServer:${spring.application_instance_id:${random.value}}
+      preferIpAddress: true
+   client:
+      registerWithEureka: true
+      fetchRegistry: true
+      region: default
+      eurekaServerConnectionTimeoutSeconds: 15
+      eurekaServerReadTimeoutSeconds: 20
+      availabilityZones:
+         default: devZone
+         preferSameZone: false
+      serviceUrl:
+         defaultZone: http://localhost:8090/eureka/      
+      
+spring:
+   application:
+      name: appServer
+   cloud:
+      config:
+         uri: http://localhost:8091
+         name: appServer
+         profile: dev
+   http:
+      multipart:
+         max-file-size: -1
+         max-request-size: -1
+security:
+   basic:
+      enabled: false
+   oauth2:
+      client:
+         clientId: client
+         clientSecret: secret
+         accessTokenUri: http://localhost:8092/auth/oauth/token
+         userAuthorizationUri: http://localhost:8092/auth/oauth/authorize
+         scope: app       
+      resource:
+         tokenInfoUri: http://localhost:8092/auth/oauth/check_token
+         id: user_api
+         authorized-grant-types: password      

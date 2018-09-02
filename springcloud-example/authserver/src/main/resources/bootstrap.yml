@@ -1,0 +1,44 @@
+server:
+   port: 8093
+   session:
+      timeout: 300
+eureka:
+   instance:
+      metadataMap:
+         instanceId: authServer:${spring.application_instance_id:${random.value}}
+      preferIpAddress: true
+   client:
+      registerWithEureka: true
+      fetchRegistry: true
+      region: default
+      eurekaServerConnectionTimeoutSeconds: 15
+      eurekaServerReadTimeoutSeconds: 20
+      availabilityZones:
+         default: devZone
+         preferSameZone: false
+      serviceUrl:
+         defaultZone: http://localhost:8090/eureka/      
+      
+spring:
+   application:
+      name: authServer
+   cloud:
+      config:
+         uri: http://localhost:8091
+         name: authServer
+         profile: dev
+   http:
+      multipart:
+         max-file-size: -1
+         max-request-size: -1
+   datasource:
+      url: jdbc:mysql://192.168.206.129:3306/alan-oauth?characterEncoding=UTF-8
+      username: flink
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+security:
+   basic:
+      enabled: false
+logging:
+   level:
+      authserver: DEBUG

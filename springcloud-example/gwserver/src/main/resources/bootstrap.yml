@@ -1,0 +1,53 @@
+server:
+   port: 8092
+eureka:
+   instance:
+      metadataMap:
+         instanceId: gwServer:${spring.application_instance_id:${random.value}}
+      preferIpAddress: true
+   client:
+      registerWithEureka: true
+      fetchRegistry: true
+      region: default
+      eurekaServerConnectionTimeoutSeconds: 15
+      eurekaServerReadTimeoutSeconds: 20
+      availabilityZones:
+         default: devZone
+         preferSameZone: false
+      serviceUrl:
+         defaultZone: http://localhost:8090/eureka/      
+      
+spring:
+   application:
+      name: gwServer
+   cloud:
+      config:
+         uri: http://localhost:8091
+         name: gwServer
+         profile: dev
+   http:
+      multipart:
+         max-file-size: -1
+         max-request-size: -1
+zuul:
+   sensitive-headers:
+   routes:
+      authServer:
+         path: /auth/**
+      appServer:
+         path: /app/**
+   host:
+      socket-timeout-millis: 60000
+      connect-timeout-millis: 60000
+      
+ribbon:
+   eureka:
+      enabled: false
+
+authServer:
+   ribbon:
+      listOfServers: http://localhost:8093
+
+appServer:
+   ribbon:
+      listOfServers: http://localhost:8094
