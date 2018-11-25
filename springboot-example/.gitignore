@@ -39,7 +39,7 @@ buildNumber.properties
 ### Linux template
 *~
 
-# temporary files which can be created if a process still has a handle open of a deleted file
+# temporary files which can be created if a process still has a server.handle open of a deleted file
 .fuse_hidden*
 
 # KDE directory preferences
