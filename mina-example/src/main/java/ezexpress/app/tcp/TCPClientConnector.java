@@ -1,8 +1,7 @@
 package ezexpress.app.tcp;
 
-import java.net.InetSocketAddress;
-import java.nio.charset.Charset;
-
+import ezexpress.app.ClientConnector;
+import ezexpress.app.codec.ExpressCodecFactory;
 import org.apache.mina.core.future.ConnectFuture;
 import org.apache.mina.core.service.IoHandler;
 import org.apache.mina.core.session.IdleStatus;
@@ -10,8 +9,8 @@ import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
-import ezexpress.app.ClientConnector;
-import ezexpress.app.codec.ExpressCodecFactory;
+import java.net.InetSocketAddress;
+import java.nio.charset.Charset;
 
 public class TCPClientConnector extends ClientConnector {
 
@@ -30,7 +29,7 @@ public class TCPClientConnector extends ClientConnector {
 			this.connector.getFilterChain().addLast("codec",
 					new ProtocolCodecFilter(new ExpressCodecFactory(Charset.forName("GBK"))));
 
-			// TODO null filter ´ýÊµÏÖ
+			// TODO null filter ï¿½ï¿½Êµï¿½ï¿½
 			this.connector.getFilterChain().addLast("logger", null);
 			this.connector.getFilterChain().addLast("loginFilter", null);
 			this.connector.getFilterChain().addLast("logoutFilter", null);
@@ -78,7 +77,7 @@ public class TCPClientConnector extends ClientConnector {
 
 	public boolean sendLoginMessage(String userName, String password) {
 
-		// TODO ·¢ËÍlogin ÏûÏ¢
+		// TODO ï¿½ï¿½ï¿½ï¿½login ï¿½ï¿½Ï¢
 		this.session.write(null);
 
 		return true;
@@ -86,7 +85,7 @@ public class TCPClientConnector extends ClientConnector {
 
 	public boolean sendLogoutMessage() {
 
-		// TODO ·¢ËÍlogout ÏûÏ¢
+		// TODO ï¿½ï¿½ï¿½ï¿½logout ï¿½ï¿½Ï¢
 		this.session.write(null);
 
 		return true;
@@ -94,7 +93,7 @@ public class TCPClientConnector extends ClientConnector {
 
 	public void sendMarketMessage(String type) {
 
-		// TODO ·¢ËÍÊµ¼ÊÏûÏ¢
+		// TODO ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ï¢
 		this.session.write(null);
 	}
 
@@ -125,7 +124,7 @@ public class TCPClientConnector extends ClientConnector {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			// TODO: server.handle exception
 		}
 	}
 

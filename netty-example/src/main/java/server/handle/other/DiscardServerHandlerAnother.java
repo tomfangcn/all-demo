@@ -1,20 +1,22 @@
-package handle;
+package server.handle.other;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.util.ReferenceCountUtil;
 
-public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
+public class DiscardServerHandlerAnother extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
+		System.out.println("read 2");
 		// ((ByteBuf) msg).release();
-		try {
+//		try {
 			// Do something with msg
-		} finally {
-			ReferenceCountUtil.release(msg);
-		}
+//			ctx.write(msg);
+//			ctx.flush();
+//		} finally {
+//			ReferenceCountUtil.release(msg);
+//		}
 
 	}
 
