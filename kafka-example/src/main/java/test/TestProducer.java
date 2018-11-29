@@ -1,14 +1,14 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.PartitionInfo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class TestProducer {
 	public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class TestProducer {
 		props.put("buffer.memory", 33554432);
 		props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-		String topic = "ftopic";
+		String topic = "topic01";
 		Producer<String, String> procuder = new KafkaProducer<String, String>(props);
 		for (int i = 1; i <= 10; i++) {
 			String value = "value_" + i;
