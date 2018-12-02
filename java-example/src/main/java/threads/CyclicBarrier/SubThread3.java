@@ -1,12 +1,12 @@
-package Threads.CyclicBarrier;
+package threads.CyclicBarrier;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-public class SubThread2 extends Thread{
+public class SubThread3 extends Thread{
 
     private CyclicBarrier cyclicBarrier;
-    public SubThread2(CyclicBarrier cyclicBarrier){
+    public SubThread3(CyclicBarrier cyclicBarrier){
         this.cyclicBarrier=cyclicBarrier;
     }
 
@@ -15,11 +15,11 @@ public class SubThread2 extends Thread{
 
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("SubThread2 arrive barrier");
+        System.out.println("SubThread3 arrive barrier");
         try {
             cyclicBarrier.await();
         } catch (InterruptedException e) {
@@ -27,6 +27,6 @@ public class SubThread2 extends Thread{
         } catch (BrokenBarrierException e) {
             e.printStackTrace();
         }
-        System.out.println("SubThread2 do other");
+        System.out.println("SubThread3 do other");
     }
 }

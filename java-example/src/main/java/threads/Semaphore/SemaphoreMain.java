@@ -1,6 +1,5 @@
-package Threads.Semaphore;
+package threads.Semaphore;
 
-import java.sql.Time;
 import java.util.concurrent.*;
 
 public class SemaphoreMain {

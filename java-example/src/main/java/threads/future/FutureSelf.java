@@ -1,4 +1,4 @@
-package Threads.future;
+package threads.future;
 
 public class FutureSelf implements Runnable{
     private volatile String  result;

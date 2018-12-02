@@ -1,4 +1,4 @@
-package Threads.CountDownLatch;
+package threads.CountDownLatch;
 
 
 import java.util.concurrent.CountDownLatch;
